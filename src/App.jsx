@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {brightpath,chatbot,elegance,"my-img",smai} from 'images';
+import {brightpath,chatbot,elegance,"my-img" as profile,smai} from 'images';
 import { Home, UserRound, Code, Mail, Linkedin, Github, ArrowDownToLine, ExternalLink } from 'lucide-react';
 
 // --- Data for Dynamic Content ---
@@ -179,7 +179,7 @@ const AboutSection = () => (
         </Reveal>
         <Reveal className="flex max-lg:flex-col max-w-4xl">
             <div className="lg:w-1/3 text-center flex flex-col items-center gap-4 pt-6 lg:px-6">
-                <img alt="Profile Pic" loading="lazy" width="170" height="170" className="border border-neutral-600 rounded-full" src={my-img.jpeg} />                                          
+                <img alt="Profile Pic" loading="lazy" width="170" height="170" className="border border-neutral-600 rounded-full" src={profile} />                                          
                 <p className="text-neutral-100 border-b border-neutral-600 pb-4">I'm a passionate Full-Stack Developer who loves building dynamic, user-friendly applications. I thrive on solving problems, creating seamless experiences, and continuously expanding my skills. Always eager to learn and grow, I'm currently looking for new opportunities to contribute and innovate.</p>
                 <div className="hidden lg:flex items-center gap-2 text-neutral-100"><UserRound className="w-4 h-4" /><span>Punjab, India</span></div>
             </div>
