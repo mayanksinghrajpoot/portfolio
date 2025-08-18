@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import dotenv from 'dotenv';
-dotenv.config();
 import { Home, UserRound, Code, Mail, Linkedin, Github, ArrowDownToLine, ExternalLink } from 'lucide-react';
-
 
 // --- Data for Dynamic Content ---
 const navItems = [
@@ -266,9 +263,9 @@ const ContactSection = () => {
         setStatus('Sending...');
 
 
-        const serviceID = process.env.SERVICEID; // Replace with your Service ID
-        const templateID = process.env.TEMPLATEID; // Replace with your Template ID
-        const publicKey = process.env.PUBLICKEY; // Replace with your Public Key
+        const serviceID = import.meta.env.VITE_APP_SERVICE_ID; // Replace with your Service ID
+        const templateID = import.meta.env.VITE_APP_TEMPLATE_ID; // Replace with your Template ID
+        const publicKey = import.meta.env.VITE_APP_PUBLIC_KEY; // Replace with your Public Key
 
         if (!serviceID.includes('YOUR_') && window.emailjs) {
             window.emailjs.send(serviceID, templateID, {
