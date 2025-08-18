@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {brightpath.png,chatbot.png,elegance.png,my-img.jpeg,smai.png} from 'images';
 import { Home, UserRound, Code, Mail, Linkedin, Github, ArrowDownToLine, ExternalLink } from 'lucide-react';
 
 // --- Data for Dynamic Content ---
@@ -35,7 +36,7 @@ const projects = [
         tech: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js','Daisy UI','AI'],
         github: 'https://github.com/mayanksinghrajpoot/BrightPath',
         live: 'https://bright-path-5m28.onrender.com',
-        image: 'src/images/brightpath.png'
+        image: {brightpath.png}
     },
     {
         title: 'Sports League Management System',
@@ -48,7 +49,7 @@ const projects = [
         tech: ['HTML', 'JavaScript', 'Tailwind CSS', 'php', 'mysql'],
         github: 'https://github.com/mayanksinghrajpoot/sports-league-management-system',
         live: 'http://sports-league.infy.uk/',
-        image: 'src/images/smai.png'
+        image: {smai.png}
     },
     {
         title: 'Trip Planner Chatbot',
@@ -61,7 +62,7 @@ const projects = [
         tech: ['HTML', 'CSS', 'JavaScript', 'AI'],
         github: 'https://github.com/Mayanksingh108/netflix-gpt',
         live: 'https://poetic-kleicha-66e678.netlify.app/',
-        image: 'src/images/chatbot.png'
+        image: {chatbot.png}
     },
     {
         title: 'Elegance Enclave',
@@ -74,7 +75,7 @@ const projects = [
         tech: ['HTML', 'CSS', 'JavaScript'],
         github: 'https://github.com/mayanksinghrajpoot/my-salon',
         live: 'https://my-salon.netlify.app/',
-        image: 'src/images/elegance.png'
+        image: {elegance.png}
     }
 ];
 
@@ -178,7 +179,7 @@ const AboutSection = () => (
         </Reveal>
         <Reveal className="flex max-lg:flex-col max-w-4xl">
             <div className="lg:w-1/3 text-center flex flex-col items-center gap-4 pt-6 lg:px-6">
-                <img alt="Profile Pic" loading="lazy" width="170" height="170" className="border border-neutral-600 rounded-full" src="src/images/my-img.jpeg" />                                          
+                <img alt="Profile Pic" loading="lazy" width="170" height="170" className="border border-neutral-600 rounded-full" src={my-img.jpeg} />                                          
                 <p className="text-neutral-100 border-b border-neutral-600 pb-4">I'm a passionate Full-Stack Developer who loves building dynamic, user-friendly applications. I thrive on solving problems, creating seamless experiences, and continuously expanding my skills. Always eager to learn and grow, I'm currently looking for new opportunities to contribute and innovate.</p>
                 <div className="hidden lg:flex items-center gap-2 text-neutral-100"><UserRound className="w-4 h-4" /><span>Punjab, India</span></div>
             </div>
