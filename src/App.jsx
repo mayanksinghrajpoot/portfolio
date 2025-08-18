@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {brightpath,chatbot,elegance,"my-img" as profile,smai} from 'images';
+import brightpath from 'images/brightpath.png';
+import chatbot from 'images/chatbot.png';
+import elegance from 'images/elegance.png';
+import {"my-img" as profile} from 'images/my-img.jpeg';
+import smai from 'images/smai.png';
 import { Home, UserRound, Code, Mail, Linkedin, Github, ArrowDownToLine, ExternalLink } from 'lucide-react';
 
 // --- Data for Dynamic Content ---
