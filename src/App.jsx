@@ -40,7 +40,7 @@ const projects = [
         tech: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js','Daisy UI','AI'],
         github: 'https://github.com/mayanksinghrajpoot/BrightPath',
         live: 'https://bright-path-5m28.onrender.com',
-        image: {brightpath}
+        image: brightpath
     },
     {
         title: 'Sports League Management System',
@@ -53,7 +53,7 @@ const projects = [
         tech: ['HTML', 'JavaScript', 'Tailwind CSS', 'php', 'mysql'],
         github: 'https://github.com/mayanksinghrajpoot/sports-league-management-system',
         live: 'http://sports-league.infy.uk/',
-        image: {smai}
+        image: smai
     },
     {
         title: 'Trip Planner Chatbot',
@@ -66,7 +66,7 @@ const projects = [
         tech: ['HTML', 'CSS', 'JavaScript', 'AI'],
         github: 'https://github.com/Mayanksingh108/netflix-gpt',
         live: 'https://poetic-kleicha-66e678.netlify.app/',
-        image: {chatbot}
+        image: chatbot
     },
     {
         title: 'Elegance Enclave',
@@ -79,7 +79,7 @@ const projects = [
         tech: ['HTML', 'CSS', 'JavaScript'],
         github: 'https://github.com/mayanksinghrajpoot/my-salon',
         live: 'https://my-salon.netlify.app/',
-        image: {elegance}
+        image: elegance
     }
 ];
 
