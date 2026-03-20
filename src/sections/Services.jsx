@@ -77,7 +77,7 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="text-zinc-500 text-lg md:text-xl max-w-2xl mx-auto"
           >
-            I spend my time deep-diving into the latest tech to see what's possible when design and code collide.
+            I specialize in transforming complex ideas into elegant, high-performing digital realities.
           </motion.p>
         </div>
 

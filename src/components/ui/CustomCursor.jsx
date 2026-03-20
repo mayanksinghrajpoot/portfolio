@@ -75,7 +75,7 @@ export default function CustomCursor() {
             animate={{ opacity: 1 }}
             className="text-[10px] uppercase font-bold tracking-widest text-pink-500"
           >
-            Explore
+            {/* Explore */}
           </motion.span>
         )}
       </motion.div>

@@ -1,18 +1,17 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import TechGrid from '../components/ui/TechGrid';
+import BentoCard from '../components/ui/BentoCard';
 import GlitchText from '../components/ui/GlitchText';
 import About3DModel from '../components/canvas/About3DModel';
-import profileImg from '../images/my-img.jpeg';
 
 const techGroups = [
   {
     category: 'Frontend & UI',
-    skills: ['HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'TypeScript', 'ReactJS', 'NextJS', 'Framer Motion', 'Redux Toolkit']
+    skills: ['HTML', 'CSS', 'Tailwind', 'JS', 'TS', 'React', 'NextJS', 'Framer', 'Redux']
   },
   {
     category: 'Backend & DB',
-    skills: ['NodeJS', 'ExpressJS', 'MongoDB', 'C++']
+    skills: ['NodeJS', 'Express', 'MongoDB', 'C++']
   },
   {
     category: 'Tools & Others',
@@ -22,7 +21,7 @@ const techGroups = [
 
 export default function About() {
   const container = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start 80%", "end start"]
@@ -32,66 +31,100 @@ export default function About() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
-    <section 
-      id="about" 
-      ref={container} 
-      className="relative min-h-screen py-32 px-6 md:px-12 flex flex-col items-center justify-center bg-zinc-950 overflow-hidden"
+    <section
+      id="about"
+      ref={container}
+      className="relative min-h-screen py-32 px-6 md:px-12 bg-zinc-950 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-pink-500/10 blur-[150px] rounded-full pointer-events-none max-w-2xl mx-auto" />
-      
-      <div className="max-w-5xl relative z-10 w-full mix-blend-difference mt-24">
-        <motion.p 
-          style={{ y: textY, opacity: textOpacity }}
-          className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-tight text-white mb-24 text-center pointer-events-auto"
+      <div className="absolute inset-0 bg-pink-500/5 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10 w-full">
+        <motion.div
+           style={{ y: textY, opacity: textOpacity }}
+           className="mb-24 text-center max-w-4xl mx-auto"
         >
-          I am a <GlitchText as="span" className="text-pink-500 italic font-medium" text="creative explorer" /> and B.Tech student who loves tinkering with 3D web and high-end animations.
-        </motion.p>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 text-left text-zinc-400 items-start">
+          <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter leading-none text-white mb-8">
+            Blending <span className="text-pink-500 italic">Creativity</span> with <GlitchText as="span" text="Logic" />
+          </h2>
+          <p className="text-zinc-500 text-lg md:text-xl font-medium tracking-tight">
+             I am a passionate developer who loves solving problems and creating seamless dynamic applications.
+          </p>
+        </motion.div>
 
-          <div className=" py-8 lg:py-0">
-            <About3DModel/>
-           </div>
-
-          <div className="space-y-12">
-            <div>
-              <h3 className="text-white text-xl uppercase font-bold tracking-widest mb-6 flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-pink-500"></span>
-                Exploration
-              </h3>
-              <div className="border-l border-zinc-800 pl-6 ml-4 space-y-6">
-                <div>
-                  <h4 className="text-white font-medium text-lg">Creative Tech Explorer</h4>
-                  <p className="text-xs tracking-widest uppercase mt-1 mb-2 text-pink-400">2023 – Present</p>
-                  <p className="text-sm">Actively tinkering with the MERN stack and 3D web graphics. Focused on pushing the boundaries of web interactivity and aesthetic depth.</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-white text-xl uppercase font-bold tracking-widest mb-6 flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-pink-500"></span>
-                Education
-              </h3>
-              <div className="border-l border-zinc-800 pl-6 ml-4 space-y-6">
-                <div>
-                  <h4 className="text-white font-medium text-lg">Lovely Professional University</h4>
-                  <p className="text-xs tracking-widest uppercase mt-1 mb-2 text-pink-400">2023 - 2025 — CGPA: 8.1</p>
-                  <p className="text-sm">Computer Science And Engineering</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[280px]">
           
+          {/* 3D Avatar - Hero of the Bento */}
+          <BentoCard span="lg:col-span-2 lg:row-span-2" className="p-0 flex items-center justify-center bg-zinc-900/20">
+             <div className="absolute inset-x-0 top-8 text-center z-10">
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-pink-500/50">3D Interaction</span>
+             </div>
+             <About3DModel />
+          </BentoCard>
 
-          <div>
-            <h3 className="text-white text-xl uppercase font-bold tracking-widest mb-8 flex items-center gap-4">
-              <span className="w-8 h-[1px] bg-pink-500 shadow-[0_0_10px_rgba(236,72,153,0.8)] animate-pulse"></span>
-              Tech Stack
+          {/* Experience */}
+          <BentoCard span="lg:col-span-2 lg:row-span-1" delay={0.1}>
+            <h3 className="text-white text-xs uppercase tracking-[0.3em] font-bold mb-8 flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-pink-500"></span>
+              Experience
             </h3>
-            <TechGrid techGroups={techGroups} />
-          </div>
+            <div className="space-y-4">
+              <h4 className="text-white text-2xl font-bold">Creative Tech Explorer</h4>
+              <p className="text-zinc-400 text-sm leading-relaxed max-w-md">
+                Actively tinkering with the MERN stack and 3D web graphics. Focused on pushing the boundaries of web interactivity and aesthetic depth.
+              </p>
+              <div className="pt-4">
+                 <span className="px-4 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/5 text-pink-400 text-xs font-bold uppercase tracking-widest">2023 – Present</span>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Tech Stack - Frontend */}
+          <BentoCard delay={0.2}>
+            <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-6 text-zinc-500">Frontend</h3>
+            <div className="flex flex-wrap gap-2">
+              {techGroups[0].skills.map(skill => (
+                <span key={skill} className="px-3 py-1 rounded-lg bg-zinc-800/50 border border-zinc-700 text-[10px] text-zinc-300 uppercase font-bold tracking-widest hover:border-pink-500/50 transition-colors">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </BentoCard>
+
+          {/* Tech Stack - Backend */}
+          <BentoCard delay={0.3}>
+            <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-6 text-zinc-500">Backend</h3>
+            <div className="flex flex-wrap gap-2">
+              {techGroups[1].skills.map(skill => (
+                <span key={skill} className="px-3 py-1 rounded-lg bg-zinc-800/50 border border-zinc-700 text-[10px] text-zinc-300 uppercase font-bold tracking-widest hover:border-pink-500/50 transition-colors">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </BentoCard>
+
+          {/* Education */}
+          <BentoCard delay={0.4}>
+            <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-6 text-zinc-500">Education</h3>
+            <div className="space-y-2">
+              <p className="text-white font-bold leading-tight">Lovely Professional University</p>
+              <p className="text-zinc-400 text-xs">Computer Science (CSE)</p>
+              <div className="mt-4 text-pink-500 text-[10px] font-black tracking-widest uppercase">CGPA: 8.1 / 10</div>
+            </div>
+          </BentoCard>
+
+          {/* Tech Stack - Tools */}
+          <BentoCard delay={0.5}>
+            <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-6 text-zinc-500">Tools</h3>
+            <div className="flex flex-wrap gap-2">
+              {techGroups[2].skills.map(skill => (
+                <span key={skill} className="px-3 py-1 rounded-lg bg-zinc-800/50 border border-zinc-700 text-[10px] text-zinc-300 uppercase font-bold tracking-widest hover:border-pink-500/50 transition-colors">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </BentoCard>
+
         </div>
       </div>
     </section>

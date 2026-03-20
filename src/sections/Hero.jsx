@@ -31,8 +31,8 @@ export default function Hero() {
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} 
         >
-          <span className="text-pink-500 font-medium tracking-widest uppercase text-xs md:text-sm mb-6 block border border-pink-500/30 w-fit mx-auto px-4 py-1.5 rounded-full bg-pink-500/10 backdrop-blur-md">B.Tech Student & Tech Explorer</span>
-          <span className="text-white/70 font-medium tracking-widest uppercase text-xs md:text-sm mb-6 block">Creative Full-Stack Developer</span>
+          <span className="text-pink-500 font-medium tracking-widest uppercase text-xs md:text-sm mb-6 block border border-pink-500/30 w-fit mx-auto px-4 py-1.5 rounded-full bg-pink-500/10 backdrop-blur-md">Actively Seeking Job Opportunities</span>
+          <span className="text-white/70 font-medium tracking-widest uppercase text-xs md:text-sm mb-6 block">Full Stack Developer</span>
         </motion.div>
         
         <motion.h1 
