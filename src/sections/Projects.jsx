@@ -2,10 +2,10 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProjectImageDistortion from '../components/canvas/ProjectImageDistortion';
 import ProjectModal from '../components/ui/ProjectModal';
-import brightpath from '../images/brightpath.png';
-import chatbot from '../images/chatbot.png';
-import elegance from '../images/elegance.png';
-import smai from '../images/smai.png';
+import brightpath from '../images/brightpath.jpg';
+import chatbot from '../images/chatbot.jpg';
+import elegance from '../images/elegance.jpg';
+import smai from '../images/smai.jpg';
 
 const projects = [
   {
@@ -13,6 +13,7 @@ const projects = [
     category: 'AI / Full Stack',
     year: '2025',
     color: 'bg-[#ec4899]', // Pink
+    object: 'object-cover',
     image: brightpath,
     live: 'https://bright-path-5m28.onrender.com',
     github: 'https://github.com/mayanksinghrajpoot/BrightPath',
@@ -53,7 +54,7 @@ const projects = [
 export default function Projects() {
   const container = useRef(null);
   const [activeProject, setActiveProject] = useState(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']
@@ -65,7 +66,7 @@ export default function Projects() {
     <section id="work" ref={container} className="relative h-[400vh] bg-black">
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6 md:px-12">
         {/* Decorative background typography with parallax */}
-        <motion.div 
+        <motion.div
           style={{ y: bgY }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-black tracking-tighter text-white/[0.03] whitespace-nowrap pointer-events-none z-0 mix-blend-overlay"
         >
@@ -77,25 +78,26 @@ export default function Projects() {
             <div className="h-[2px] bg-white/20 flex-1 hidden md:block"></div>
           </h2>
         </div>
-        
+
         <div className="relative w-full max-w-7xl aspect-[4/3] md:aspect-[21/9]">
           {projects.map((project, i) => (
-            <ProjectCard 
-              key={project.title} 
-              project={project} 
-              index={i} 
-              progress={scrollYProgress} 
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={i}
+              progress={scrollYProgress}
               total={projects.length}
               onClick={() => setActiveProject(project)}
+            // className="ob-cover"
             />
           ))}
         </div>
       </div>
 
-      <ProjectModal 
-        project={activeProject} 
-        isOpen={!!activeProject} 
-        onClose={() => setActiveProject(null)} 
+      <ProjectModal
+        project={activeProject}
+        isOpen={!!activeProject}
+        onClose={() => setActiveProject(null)}
       />
     </section>
   );
@@ -103,18 +105,18 @@ export default function Projects() {
 
 function ProjectCard({ project, index, progress, total, onClick }) {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   // Map scroll progress to animations
   const interval = 1 / (total - 1); // 0.33 for 4 items
-  
+
   // y animation (slide up from below)
   const startSlide = Math.max(0, (index - 1) * interval);
   const endSlide = index * interval;
-  
+
   const yRange = index === 0 ? [0, 1] : [startSlide, endSlide];
   const yOutput = index === 0 ? ["0%", "0%"] : ["150%", "0%"];
   const y = useTransform(progress, yRange, yOutput);
-  
+
   // Scale animation (scale down as newer cards stack on top)
   const scaleStart = index === 0 ? 0 : endSlide;
   const targetScale = 1 - ((total - 1 - index) * 0.05); // shrinks by 5% per layer
@@ -126,12 +128,12 @@ function ProjectCard({ project, index, progress, total, onClick }) {
   const opacity = useTransform(progress, [opacityStart, 1], [1, targetOpacity]);
 
   return (
-    <motion.div 
-      style={{ 
-        y, 
-        scale, 
+    <motion.div
+      style={{
+        y,
+        scale,
         opacity,
-        zIndex: index, 
+        zIndex: index,
         transformOrigin: "top center",
         top: `${index * 12}px` // subtle offset to simulate physical stacking
       }}
@@ -143,7 +145,7 @@ function ProjectCard({ project, index, progress, total, onClick }) {
     >
       {/* Background tint based on project color */}
       <div className={`absolute inset-0 ${project.color} opacity-20 transition-opacity duration-700 group-hover:opacity-40 z-10 pointer-events-none`} />
-      
+
       {/* WebGL Image Distortion */}
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 to-black z-0">
         <ProjectImageDistortion imageSrc={project.image} isHovered={isHovered} />
@@ -159,7 +161,7 @@ function ProjectCard({ project, index, progress, total, onClick }) {
             {project.year}
           </span>
         </div>
-        
+
         <div className="pointer-events-auto">
           <h2 className="text-4xl md:text-[6vw] font-bold uppercase tracking-tighter mb-2 transition-transform duration-500 origin-left group-hover:scale-105 drop-shadow-lg leading-none">
             {project.title}
