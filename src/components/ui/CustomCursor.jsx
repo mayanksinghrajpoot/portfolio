@@ -19,14 +19,16 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-200);
   const cursorY = useMotionValue(-200);
 
-  const springConfig = { damping: 30, stiffness: 500, mass: 0.35 };
-  const x = useSpring(cursorX, springConfig);
-  const y = useSpring(cursorY, springConfig);
+  // Inner dot tracks 1:1 with zero lag
+  const x = cursorX;
+  const y = cursorY;
 
-  // Outer ring follows with more lag for a trailing effect
-  const outerSpring = { damping: 22, stiffness: 200, mass: 0.6 };
+  // Outer ring follows with a tight, consistent spring
+  const outerSpring = { damping: 25, stiffness: 400, mass: 0.1 };
   const outerX = useSpring(cursorX, outerSpring);
   const outerY = useSpring(cursorY, outerSpring);
+
+  const hasMoved = useRef(false);
 
   useEffect(() => {
     // Only render on pointer (non-touch) devices
@@ -35,11 +37,22 @@ export default function CustomCursor() {
     const move = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      
+      // Prevent massive re-renders: only set state once when mouse first moves
+      if (!hasMoved.current) {
+        hasMoved.current = true;
+        setIsVisible(true);
+      }
     };
 
-    const enter = () => setIsVisible(true);
-    const leave = () => setIsVisible(false);
+    const enter = () => {
+      hasMoved.current = true;
+      setIsVisible(true);
+    };
+    const leave = () => {
+      hasMoved.current = false;
+      setIsVisible(false);
+    };
 
     const hover = (e) => {
       const el = e.target;

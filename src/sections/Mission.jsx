@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ui/ScrollReveal';
-import myImg from '../images/myimg.png';
+import myImg from '../images/myimg.jpg';
 
 export default function Mission() {
   return (
