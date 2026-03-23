@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function LoadingScreen({ onComplete }) {
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(1);
 
   useEffect(() => {
     // Simulate asset loading progress
@@ -17,12 +17,13 @@ export default function LoadingScreen({ onComplete }) {
           }, 400);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 15) + 5;
+        // Increase progress randomly
+        return Math.min(100, prev + Math.floor(Math.random() * 8) + 2);
       });
-    }, 150);
+    }, 100);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, []); // Only run once on mount
 
   return (
     <AnimatePresence>

@@ -42,9 +42,13 @@ function App() {
     else document.documentElement.classList.remove('ascii-mode');
   }, [isAsciiMode]);
 
+  const handleLoadingComplete = React.useCallback(() => {
+    setInit(true);
+  }, []);
+
   return (
     <>
-      {!init && <LoadingScreen onComplete={() => setInit(true)} />}
+      {!init && <LoadingScreen onComplete={handleLoadingComplete} />}
 
       <SmoothScroll>
         <CustomCursor />

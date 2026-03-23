@@ -39,7 +39,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="w-full min-w-5xl mx-auto flex flex-col items-center pointer-events-auto"
+          className="w-full  mx-auto flex flex-col items-center pointer-events-auto"
           initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -49,7 +49,7 @@ export default function Hero() {
             text="Mayank"
             fontFamily="Compressa VF"
             textColor="#FFFFFF"
-            minFontSize={60}
+            minFontSize={50}
           />
           {/* </div> */}
           {/* <div className="h-[12vw] md:h-[10vw] w-full -mt-[2vw]">
