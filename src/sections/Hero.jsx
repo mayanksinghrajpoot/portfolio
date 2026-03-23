@@ -4,6 +4,7 @@ import { ArrowDown } from 'lucide-react';
 import HeroScene from '../components/canvas/HeroScene';
 import GlitchText from '../components/ui/GlitchText';
 import TextPressure from '../components/ui/TextPressure';
+import VariableProximity from '../components/ui/variableProximity';
 
 
 export default function Hero() {
@@ -39,27 +40,29 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="w-full  mx-auto flex flex-col items-center pointer-events-auto"
+          className="w-full mx-auto flex flex-col items-center pointer-events-auto"
           initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* <div className="h-[15vw] md:h-[12vw] w-full"> */}
-          <TextPressure
+          {/* <TextPressure
             text="Mayank"
             fontFamily="Compressa VF"
             textColor="#FFFFFF"
             minFontSize={50}
-          />
+          /> */}
+
           {/* </div> */}
-          {/* <div className="h-[12vw] md:h-[10vw] w-full -mt-[2vw]">
-            <TextPressure 
-                text="SINGH" 
-                fontFamily="Compressa VF"
-                textColor="#FFFFFF"
-                minFontSize={50}
-            />
-          </div> */}
+          <VariableProximity
+            label="Mayank"
+            containerRef={container}
+            fromFontVariationSettings="'wght' 100, 'wdth' 100, 'ital' 0"
+            toFontVariationSettings="'wght' 900, 'wdth' 200, 'ital' 1"
+            radius={200}
+            falloff="linear"
+            className="text-[15rem] md:text-[30vw] font-bold uppercase tracking-tighter leading-[0.90] text-white select-none whitespace-nowrap"
+          />
         </motion.div>
 
         <motion.p
