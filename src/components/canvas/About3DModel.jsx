@@ -1,5 +1,6 @@
-import { useRef, useState, Suspense } from 'react';
+import { useRef, useState, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { EffectComposer, Bloom, DepthOfField, Noise } from '@react-three/postprocessing';
 import {
   Float,
   PerspectiveCamera,
@@ -8,7 +9,6 @@ import {
   ContactShadows,
   Environment,
   Text,
-  MeshWobbleMaterial
 } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -74,22 +74,57 @@ function Avatar() {
 function Backdrop() {
   const mesh = useRef();
 
+  const uniforms = useMemo(() => ({
+    uTime: { value: 0 },
+    uColor: { value: new THREE.Color("#ec4899") }
+  }), []);
+
   useFrame((state) => {
     if (mesh.current) {
-      mesh.current.rotation.x = mesh.current.rotation.y += 1.34;
+      mesh.current.material.uniforms.uTime.value = state.clock.elapsedTime;
+      mesh.current.rotation.y += 0.005;
     }
   });
 
   return (
-    <mesh position={[0, 0, -10]} scale={[25, 25, 1]} ref={mesh}>
+    <mesh position={[0, -2, -8]} scale={[18, 18, 1]} ref={mesh}>
       <sphereGeometry args={[1, 64, 64]} />
-      <MeshWobbleMaterial
-        color="#ec4899"
-        factor={0.4}
-        speed={1}
-        opacity={0.15}
+      <shaderMaterial
         transparent
-        wireframe
+        depthWrite={false}
+        uniforms={uniforms}
+        vertexShader={`
+          varying vec2 vUv;
+          varying vec3 vPosition;
+          void main() {
+            vUv = uv;
+            vPosition = position;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `}
+        fragmentShader={`
+          uniform float uTime;
+          uniform vec3 uColor;
+          varying vec2 vUv;
+          varying vec3 vPosition;
+
+          void main() {
+            // Holographic scanlines
+            float scanlines = sin(vUv.y * 100.0 - uTime * 5.0) * 0.5 + 0.5;
+            
+            // Rim fade (fresnel-like)
+            float dist = distance(vUv, vec2(0.5));
+            float fade = smoothstep(0.5, 0.2, dist);
+            
+            // Grid pattern
+            float grid = sin(vUv.x * 40.0) * sin(vUv.y * 40.0);
+            grid = smoothstep(0.9, 1.0, grid);
+
+            float alpha = (scanlines * 0.3 + grid * 0.5) * fade * 0.8;
+            gl_FragColor = vec4(uColor, alpha);
+          }
+        `}
+        side={THREE.DoubleSide}
       />
     </mesh>
   );
@@ -97,8 +132,8 @@ function Backdrop() {
 
 export default function About3DModel() {
   return (
-    <div className="w-full h-[800px] cursor-grab active:cursor-grabbing relative group/canvas">
-      <Canvas shadows dpr={[1, 2]}>
+    <div className="w-full h-full min-h-[560px] cursor-grab active:cursor-grabbing relative group/canvas">
+      <Canvas shadows dpr={[1, 1.5]} gl={{ powerPreference: "high-performance", antialias: false }}>
         <PerspectiveCamera makeDefault position={[0, -4.7, 9]} fov={40} />
 
         {/* Lighting refined for premium look */}
@@ -135,6 +170,22 @@ export default function About3DModel() {
             far={4.5}
             color="#ec4899"
           />
+
+          {/* Post Processing Effects */}
+          <EffectComposer disableNormalPass multisampling={0}>
+            <DepthOfField
+              focusDistance={0.05}
+              focalLength={0.1}
+              bokehScale={3}
+              height={480}
+            />
+            <Bloom
+              luminanceThreshold={0.2}
+              luminanceSmoothing={0.9}
+              intensity={1.5}
+            />
+            <Noise opacity={0.03} />
+          </EffectComposer>
         </Suspense>
       </Canvas>
     </div>

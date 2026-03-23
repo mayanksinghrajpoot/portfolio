@@ -10,13 +10,13 @@ export default function Footer() {
   return (
     <footer id="contact" className="relative w-full py-24 px-6 md:px-12 bg-black text-white overflow-hidden flex flex-col justify-between min-h-[50vh]">
       <div className="z-10 flex flex-col gap-4 max-w-4xl">
-        {/* <h2 className="text-5xl md:text-8xl tracking-tighter uppercase font-bold leading-none">
+        <h2 className="text-5xl md:text-8xl tracking-tighter uppercase font-bold leading-none">
           Aight Bro...<br />
           <span className="text-zinc-600">Thats it.</span>
-        </h2> */}
-            <p className="text-sm leading-relaxed mb-8">
+        </h2>
+        {/* <p className="text-sm leading-relaxed mb-8">
               Creative Developer exploring the intersection of high-performance web architecture and immersive 3D experiences.
-            </p>
+            </p> */}
         <div className="flex gap-4">
           <a href="https://github.com/mayanksinghrajpoot" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:border-pink-500/50 hover:text-pink-400 transition-all duration-300">
             <Github className="w-5 h-5" />
