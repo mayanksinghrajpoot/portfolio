@@ -41,7 +41,7 @@ export default function Mission() {
               <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
               <p className="text-[9px] text-zinc-400 uppercase tracking-[0.3em] font-bold">Status</p>
             </div>
-            <p className="text-white font-mono text-sm tracking-tight">Architecting the future</p>
+            <p className="text-white font-mono text-sm tracking-tight">Building bridges to tomorrow</p>
           </div>
         </motion.div>
 
@@ -52,16 +52,16 @@ export default function Mission() {
               The Mission
             </h3>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[1.1] mb-8">
-              I bridge the gap between <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #ec4899' }}>engineering</span> <br className="hidden md:block" />& design
+              I translate complex <br className="hidden md:block" /> logic into human <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #ec4899' }}>emotion</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.4}>
             <p className="text-zinc-300 text-lg md:text-xl leading-relaxed mb-6 font-medium">
-              I don't just write code. I architect scalable backend systems and craft fluid, immersive frontend experiences that captivate.
+              I don't just write code. I architect systems that breathe and craft interfaces that feel alive.
             </p>
             <p className="text-zinc-500 text-sm md:text-base leading-relaxed mb-10 max-w-xl">
-              Every pixel, animation, and database query is purpose-built. Whether it's a glowing WebGL particle simulation or a high-performance booking platform, I obsess over the details that elevate a website into an elite digital reality.
+              Every pixel and database query is a choice made with purpose—to elevate a website into a digital reality that actually connects.
             </p>
 
             <div className="flex flex-wrap gap-4">

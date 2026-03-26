@@ -71,7 +71,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
           className="mt-8 text-zinc-300 max-w-sm md:max-w-xl text-sm md:text-lg mix-blend-normal"
         >
-          Crafting beautiful & functional web experiences. Passionate about building performant, user-friendly, and scalable applications.
+          I build digital playgrounds where logic meets art. Turning complex problems into fluid, human-centric experiences.
         </motion.p>
 
         {/* See Work CTA */}

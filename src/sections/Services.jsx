@@ -10,7 +10,7 @@ const services = [
   },
   {
     title: '3D Web Experiences',
-    description: 'Integrating immersive 3D models and interactive scenes into the web using Three.js and React Three Fiber.',
+    description: 'Adding depth to a flat world. I bring static pages to life with interactive 3D layers that beg to be explored.',
     icon: <Layers className="w-8 h-8 text-pink-500" />,
   },
   {
@@ -62,15 +62,15 @@ export default function Services() {
     <section id="exploration" className="py-32 px-6 md:px-12 bg-[#050505]">
       <div className="max-w-6xl mx-auto">
         <div className="mb-20 text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-white text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-4"
           >
-            Technical <span className="text-pink-500">Exploration</span>
+            The <span className="text-pink-500">Toolkit</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -81,7 +81,7 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -92,7 +92,7 @@ export default function Services() {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
                 backgroundColor: 'rgba(236, 72, 153, 0.05)',
                 borderColor: 'rgba(236, 72, 153, 0.4)',

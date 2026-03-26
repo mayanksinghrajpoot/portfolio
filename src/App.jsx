@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, useScroll, useVelocity, useSpring, useTransform } from 'framer-motion';
 import SmoothScroll from './components/layout/SmoothScroll';
 import Navbar from './components/layout/Navbar';
@@ -12,13 +12,13 @@ import CVTrigger from './components/ui/CVTrigger';
 import Hero from './sections/Hero';
 import StatsBar from './sections/StatsBar';
 import Mission from './sections/Mission';
-import About from './sections/About';
-import Timeline from './sections/Timeline';
-import Projects from './sections/Projects';
-import CaseStudy from './sections/CaseStudy';
-import SkillsGlobe from './sections/SkillsGlobe';
-import Testimonials from './sections/Testimonials';
-import Contact from './sections/Contact';
+
+// Lazy-load heavy below-fold sections to reduce initial bundle
+const Projects = lazy(() => import('./sections/Projects'));
+const About = lazy(() => import('./sections/About'));
+const Timeline = lazy(() => import('./sections/Timeline'));
+const Testimonials = lazy(() => import('./sections/Testimonials'));
+const Contact = lazy(() => import('./sections/Contact'));
 
 function App() {
   const [isCVOpen, setIsCVOpen] = useState(false);
@@ -60,13 +60,15 @@ function App() {
           <Hero />
           <StatsBar />
           <Mission />
-          <Projects />
-          {/* <CaseStudy /> */}
-          {/* <SkillsGlobe /> */}
-          <About />
-          <Timeline />
-          <Testimonials />
-          <Contact />
+          <Suspense fallback={null}>
+            <Projects />
+            {/* <CaseStudy /> */}
+            {/* <SkillsGlobe /> */}
+            <About />
+            <Timeline />
+            <Testimonials />
+            <Contact />
+          </Suspense>
           <Footer />
 
           <CVTrigger onClick={() => setIsCVOpen(true)} />

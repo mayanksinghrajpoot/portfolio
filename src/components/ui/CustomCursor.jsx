@@ -87,7 +87,7 @@ export default function CustomCursor() {
       document.removeEventListener('mouseleave', leave);
       document.documentElement.style.cursor = 'auto';
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, []);
 
   // Don't render on touch/mobile
   if (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) return null;

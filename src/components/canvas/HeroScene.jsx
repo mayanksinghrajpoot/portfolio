@@ -223,7 +223,7 @@
 // }
 
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -278,11 +278,30 @@ function ParticleSwarm({ count = 5000 }) {
 }
 
 export default function HeroScene() {
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 z-0 bg-[#050505]">
-      <Canvas camera={{ position: [0, 0, 15], fov: 75 }} gl={{ antialias: true, alpha: false }}>
+    <div ref={containerRef} className="absolute inset-0 z-0 bg-[#050505]">
+      <Canvas
+        camera={{ position: [0, 0, 15], fov: 75 }}
+        gl={{ antialias: false, alpha: false, powerPreference: 'high-performance' }}
+        dpr={[1, 1.5]}
+        frameloop={isVisible ? 'always' : 'never'}
+      >
         <fog attach="fog" args={['#050505', 10, 25]} />
-        <ParticleSwarm count={3500} />
+        <ParticleSwarm count={2000} />
       </Canvas>
 
       {/* Bottom fade mask */}
