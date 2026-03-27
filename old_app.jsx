@@ -191,7 +191,7 @@ const AboutSection = () => (
                 <div className="pb-4 border-b border-neutral-600">
                     <h3 className="text-lg text-neutral-100 font-semibold mb-2">Education</h3>
                     <p className="text-neutral-100 text-sm flex justify-between"><span className="font-semibold">Lovely Professional University</span> <span>2023 - 2025</span></p>
-                    <p className="text-neutral-100 text-sm flex justify-between"><span>Computer Science And Engineering</span> <span>CGPA: 8.1</span></p>
+                    <p className="text-neutral-100 text-sm flex justify-between"><span>Computer Science And Engineering</span> <span>CGPA: 8.02</span></p>
                 </div>
                 <div className="pb-4 border-b border-neutral-600">
                     <h2 className="text-lg font-semibold mb-4">Experience</h2>

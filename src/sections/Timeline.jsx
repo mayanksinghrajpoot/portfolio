@@ -4,7 +4,7 @@ import ScrollReveal from '../components/ui/ScrollReveal';
 
 const milestones = [
   {
-    year: '2021',
+    year: '2023',
     title: 'The Foundation',
     desc: 'Started B.Tech in CSE at Lovely Professional University. Wrote my first line of code and began a journey into the world of logic and algorithms.',
     icon: '💡',
@@ -20,7 +20,7 @@ const milestones = [
   //   color: '#d946ef',
   // },
   {
-    year: '2023',
+    year: '2025',
     title: 'MERN Mastery',
     desc: 'Dove deep into full-stack development. Mastered the MERN stack and began architecting complex web systems from the ground up.',
     icon: '🚀',
@@ -28,7 +28,7 @@ const milestones = [
     color: '#a855f7',
   },
   {
-    year: '2024',
+    year: '2026',
     title: 'Industry & Impact',
     desc: 'Software Developer Intern at iAmpact. Deployed Krishi Sakhi (Auction Engine) and Elegance Enclave, focusing on real-world community impact.',
     icon: '🏆',
@@ -36,7 +36,7 @@ const milestones = [
     color: '#ec4899',
   },
   {
-    year: '2025',
+    year: '2026',
     title: 'The AI Frontier',
     desc: 'Scaling Bright Path — an AI-powered learning ecosystem. Exploring the edge of 3D web with WebGL as I prepare for the next chapter.',
     icon: '🧠',

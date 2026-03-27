@@ -52,7 +52,7 @@ export default function Mission() {
               The Mission
             </h3>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[1.1] mb-8">
-              I translate complex <br className="hidden md:block" /> logic into human <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #ec4899' }}>emotion</span>
+              I bridge the gap between <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #ec4899' }}>engineering</span> <br className="hidden md:block" />& design
             </h2>
           </ScrollReveal>
 
